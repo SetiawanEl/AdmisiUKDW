@@ -262,6 +262,7 @@ require_once("conn.php");
                                                                         <button type="button"
                                                                             class="btn btn-primary">Selengkapnya</button>
                                                                     </div>
+                                                                    
                                                                 </div>
                                                                 <div class="tab-pane fade" id="nav-profile"
                                                                     role="tabpanel" aria-labelledby="nav-profile-tab">
@@ -466,8 +467,8 @@ require_once("conn.php");
                                                                 <div class="tab-pane fade active show" id="nav-s1"
                                                                     role="tabpanel" aria-labelledby="nav-s1-tab">
                                                                     <div class="progress-box progress-1">
-                                                                        <h4 class="por-title">Tidak Memilih</h4>
-                                                                        <div class="por-txt">1309 Mahasiswa</div>
+                                                                    <h4 class="por-title"><?php echo $values[8]['j2'] ?></h4>
+                                                                        <div class="por-txt"><?php echo $values[8]['r2'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-1"
                                                                                 role="progressbar" style="width: 40%;"
@@ -476,8 +477,8 @@ require_once("conn.php");
                                                                         </div>
                                                                     </div>
                                                                     <div class="progress-box progress-2">
-                                                                        <h4 class="por-title">Informatika</h4>
-                                                                        <div class="por-txt">700 Mahasiswa</div>
+                                                                    <h4 class="por-title"><?php echo $values[9]['j2'] ?></h4>
+                                                                        <div class="por-txt"><?php echo $values[9]['r2'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-4"
                                                                                 role="progressbar" style="width: 24%;"
@@ -486,8 +487,8 @@ require_once("conn.php");
                                                                         </div>
                                                                     </div>
                                                                     <div class="progress-box progress-2">
-                                                                        <h4 class="por-title">Sistem Informasi</h4>
-                                                                        <div class="por-txt">300 Mahasiswa</div>
+                                                                    <h4 class="por-title"><?php echo $values[10]['j2'] ?></h4>
+                                                                        <div class="por-txt"><?php echo $values[10]['r2'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-2"
                                                                                 role="progressbar" style="width: 60%;"
