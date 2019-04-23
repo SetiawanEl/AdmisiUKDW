@@ -12,7 +12,7 @@ Berikut Adalah Dokumentasi Pembuatan Dashboard untuk Admisi UKDW. Fitur yang dih
 8. Grafik Distribusi Pekerjaan Orangtua Mahasiswa Pendaftar
 9. Menampilkan Seluruh data Mahasiswa
 10. Fitur pencarian data Mahasiswa 
-11. Login tingkat eksekutif UKDW
+11. Login tingkat eksekutif Univesitas Duta Wacana
 .
 .
 Note : Repository ini hanya untuk kepentingan tugas perkuliahan. 
