@@ -216,9 +216,11 @@ require_once("conn.php");
                                                                     <div class="progress-box progress-1">
                                                                     <?php
                                                                         $no= 1;
-                                                                        $result = $conn->query("select a.Jurusan_1 as j1, a.Pendaftar as p1, a.Diterima as d1,
-                                                                        a.Regis as r1, b.Jurusan_2 as j2, b.Pendaftar as p2, b.Diterima as d2, b.Regis as r2, 
-                                                                        c.Jurusan_3 as j3, c.Pendaftar as p3, c.Diterima as d3, c.Regis as r3 from trend_1 a, trend_2 b, trend_3 c");
+                                                                        $result = $conn->query("(select a.Jurusan_1 as j1, a.Pendaftar as p1, a.Diterima as d1,a.Regis as r1 FROM trend_1 a LIMIT 3)
+                                                                        UNION 
+                                                                        (SELECT b.Jurusan_2 as j2, b.Pendaftar as p2, b.Diterima as d2, b.Regis as r2 FROM trend_2 b LIMIT 3)
+                                                                        UNION 
+                                                                        (SELECT c.Jurusan_3 as j3, c.Pendaftar as p3, c.Diterima as d3, c.Regis as r3 from trend_3 c LIMIT 3)");
                                                                         while ($row = mysqli_fetch_assoc($result)) {
                                                                         $values[]=$row;
                                                                            
@@ -227,7 +229,7 @@ require_once("conn.php");
                                                                                     { 
                                              
                                                                     ?>
-                                                                        <h4 class="por-title"><?php echo $values[10]['j1'] ?></h4>
+                                                                        <h4 class="por-title"><?php echo $values[0]['j1'] ?></h4>
                                                                         <div class="por-txt"><?php echo $values[0]['p1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-1"
@@ -393,8 +395,8 @@ require_once("conn.php");
                                                                 <div class="tab-pane fade" id="nav-d1" role="tabpanel"
                                                                     aria-labelledby="nav-d1-tab">
                                                                     <div class="progress-box progress-1">
-                                                                        <h4 class="por-title"><?php echo $values[8]['j2'] ?></h4>
-                                                                        <div class="por-txt"><?php echo $values[8]['p2'] ?> Mahasiswa</div>
+                                                                        <h4 class="por-title"><?php echo $values[3]['j1'] ?></h4>
+                                                                        <div class="por-txt"><?php echo $values[3]['p1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-1"
                                                                                 role="progressbar" style="width: 40%;"
@@ -403,8 +405,8 @@ require_once("conn.php");
                                                                         </div>
                                                                     </div>
                                                                     <div class="progress-box progress-2">
-                                                                    <h4 class="por-title"><?php echo $values[9]['j2'] ?></h4>
-                                                                        <div class="por-txt"><?php echo $values[9]['p2'] ?> Mahasiswa</div>
+                                                                    <h4 class="por-title"><?php echo $values[4]['j1'] ?></h4>
+                                                                        <div class="por-txt"><?php echo $values[4]['p1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-4"
                                                                                 role="progressbar" style="width: 24%;"
@@ -413,8 +415,8 @@ require_once("conn.php");
                                                                         </div>
                                                                     </div>
                                                                     <div class="progress-box progress-2">
-                                                                    <h4 class="por-title"><?php echo $values[10]['j2'] ?></h4>
-                                                                        <div class="por-txt"><?php echo $values[10]['p2'] ?> Mahasiswa</div>
+                                                                    <h4 class="por-title"><?php echo $values[5]['j1'] ?></h4>
+                                                                        <div class="por-txt"><?php echo $values[5]['p1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-2"
                                                                                 role="progressbar" style="width: 60%;"
@@ -430,8 +432,8 @@ require_once("conn.php");
                                                                 <div class="tab-pane fade" id="nav-r1"
                                                                     role="tabpanel" aria-labelledby="nav-r1-tab">
                                                                     <div class="progress-box progress-1">
-                                                                    <h4 class="por-title"><?php echo $values[8]['j2'] ?></h4>
-                                                                        <div class="por-txt"><?php echo $values[8]['d2'] ?> Mahasiswa</div>
+                                                                    <h4 class="por-title"><?php echo $values[3]['j1'] ?></h4>
+                                                                        <div class="por-txt"><?php echo $values[3]['d1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-1"
                                                                                 role="progressbar" style="width: 40%;"
@@ -440,8 +442,8 @@ require_once("conn.php");
                                                                         </div>
                                                                     </div>
                                                                     <div class="progress-box progress-2">
-                                                                    <h4 class="por-title"><?php echo $values[9]['j2'] ?></h4>
-                                                                        <div class="por-txt"><?php echo $values[9]['d2'] ?> Mahasiswa</div>
+                                                                    <h4 class="por-title"><?php echo $values[4]['j1'] ?></h4>
+                                                                        <div class="por-txt"><?php echo $values[4]['d1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-4"
                                                                                 role="progressbar" style="width: 24%;"
@@ -450,8 +452,8 @@ require_once("conn.php");
                                                                         </div>
                                                                     </div>
                                                                     <div class="progress-box progress-2">
-                                                                    <h4 class="por-title"><?php echo $values[10]['j2'] ?></h4>
-                                                                        <div class="por-txt"><?php echo $values[10]['d2'] ?> Mahasiswa</div>
+                                                                    <h4 class="por-title"><?php echo $values[5]['j1'] ?></h4>
+                                                                        <div class="por-txt"><?php echo $values[5]['d1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-2"
                                                                                 role="progressbar" style="width: 60%;"
@@ -467,8 +469,8 @@ require_once("conn.php");
                                                                 <div class="tab-pane fade active show" id="nav-s1"
                                                                     role="tabpanel" aria-labelledby="nav-s1-tab">
                                                                     <div class="progress-box progress-1">
-                                                                    <h4 class="por-title"><?php echo $values[8]['j2'] ?></h4>
-                                                                        <div class="por-txt"><?php echo $values[8]['r2'] ?> Mahasiswa</div>
+                                                                    <h4 class="por-title"><?php echo $values[3]['j1'] ?></h4>
+                                                                        <div class="por-txt"><?php echo $values[3]['r1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-1"
                                                                                 role="progressbar" style="width: 40%;"
@@ -477,8 +479,8 @@ require_once("conn.php");
                                                                         </div>
                                                                     </div>
                                                                     <div class="progress-box progress-2">
-                                                                    <h4 class="por-title"><?php echo $values[9]['j2'] ?></h4>
-                                                                        <div class="por-txt"><?php echo $values[9]['r2'] ?> Mahasiswa</div>
+                                                                    <h4 class="por-title"><?php echo $values[4]['j1'] ?></h4>
+                                                                        <div class="por-txt"><?php echo $values[4]['r1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-4"
                                                                                 role="progressbar" style="width: 24%;"
@@ -487,8 +489,8 @@ require_once("conn.php");
                                                                         </div>
                                                                     </div>
                                                                     <div class="progress-box progress-2">
-                                                                    <h4 class="por-title"><?php echo $values[10]['j2'] ?></h4>
-                                                                        <div class="por-txt"><?php echo $values[10]['r2'] ?> Mahasiswa</div>
+                                                                    <h4 class="por-title"><?php echo $values[5]['j1'] ?></h4>
+                                                                        <div class="por-txt"><?php echo $values[5]['r1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-2"
                                                                                 role="progressbar" style="width: 60%;"
