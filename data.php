@@ -2,15 +2,15 @@
         jQuery(document).ready(function ($) {
             "use strict";
             <?php
-                                                                        $no= 1;
-                                                                        $result = $conn->query("select a.Jurusan_1 as j1, a.Pendaftar as p1, a.Diterima as d1,
-                                                                        a.Regis as r1, b.Jurusan_2 as j2, b.Pendaftar as p2, b.Diterima as d2, b.Regis as r2, 
-                                                                        c.Jurusan_3 as j3, c.Pendaftar as p3, c.Diterima as d3, c.Regis as r3 from trend_1 a, trend_2 b, trend_3 c");
-                                                                        while ($row = mysqli_fetch_assoc($result)) {
-                                                                        $values[]=$row;   
-                                                                                    }
-                                                                            mysqli_free_result($result);
-                                                                                    { 
+                $no= 1;
+                $result = $conn->query("select a.Jurusan_1 as j1, a.Pendaftar as p1, a.Diterima as d1,
+                a.Regis as r1, b.Jurusan_2 as j2, b.Pendaftar as p2, b.Diterima as d2, b.Regis as r2, 
+                c.Jurusan_3 as j3, c.Pendaftar as p3, c.Diterima as d3, c.Regis as r3 from trend_1 a, trend_2 b, trend_3 c");
+                while ($row = mysqli_fetch_assoc($result)) {
+                $values[]=$row;   
+                            }
+                mysqli_free_result($result);
+                            { 
                                              
             ?>
             // Pie chart flotPie1
@@ -151,10 +151,51 @@
                         });
                     }
                 });
+
+            }
+            
+        <?php } ?>
+            if ($('#traffic-chart2').length) {
+                var chart = new Chartist.Line('#traffic-chart2', {
+                    labels: ['Pendaftar', 'Diterima', 'Reg'],
+                    series: [
+                        [<?php echo $values[3]['p1'] ?>, <?php echo $values[3]['d1'] ?>, <?php echo $values[3]['r1'] ?>],
+                        [<?php echo $values[4]['p1'] ?>, <?php echo $values[4]['d1'] ?>, <?php echo $values[4]['r1'] ?>],
+                        [<?php echo $values[5]['p1'] ?>, <?php echo $values[5]['d1'] ?>, <?php echo $values[5]['r1'] ?>]
+                    ]
+                }, {
+                    low: 0,
+                    showArea: true,
+                    showLine: false,
+                    showPoint: false,
+                    fullWidth: true,
+                    axisX: {
+                        showGrid: true
+                    }
+                });
+
+                
+
+                chart.on('draw', function (data) {
+                    if (data.type === 'line' || data.type === 'area') {
+                        data.element.animate({
+                            d: {
+                                begin: 2000 * data.index,
+                                dur: 2000,
+                                from: data.path.clone().scale(1, 0).translate(0, data
+                                    .chartRect
+                                    .height()).stringify(),
+                                to: data.path.clone().stringify(),
+                                easing: Chartist.Svg.Easing.easeOutQuint
+                            }
+                        });
+                    }
+                });
             }
             // Traffic Chart using chartist End
+
+            
             
             
         });
-        <?php } ?>
     </script>

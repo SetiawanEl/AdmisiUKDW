@@ -41,9 +41,6 @@
         .traffic-chart {
             min-height: 335px;
         }
-        .traffic-chart2 {
-            min-height: 335px;
-        }
 
         #flotPie1 {
             height: 150px;

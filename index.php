@@ -365,7 +365,7 @@ require_once("conn.php");
                                         <div class="col-lg-7">
                                             <div class="card-body">
                                                 <!-- <canvas id="TrafficChart"></canvas>   -->
-                                                <div id="traffic-chart" class="traffic-chart"></div>
+                                                <div id="traffic-chart2" class="traffic-chart"></div>
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
@@ -529,7 +529,7 @@ require_once("conn.php");
                                         <div class="col-lg-7">
                                             <div class="card-body">
                                                 <!-- <canvas id="TrafficChart"></canvas>   -->
-                                                <div id="traffic-chart" class="traffic-chart"></div>
+                                                <div id="traffic-cha" class="traffic-cha"></div>
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
@@ -540,26 +540,26 @@ require_once("conn.php");
                                                             <nav>
                                                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                                                     <a class="nav-item nav-link" id="p1-tab"
-                                                                        data-toggle="tab" href="#p1-home" role="tab"
-                                                                        aria-controls="p1-home"
+                                                                        data-toggle="tab" href="#p1-p3" role="tab"
+                                                                        aria-controls="p1-p3"
                                                                         aria-selected="false">Pendaftar</a>
-                                                                    <a class="nav-item nav-link" id="nav-profile-tab"
-                                                                        data-toggle="tab" href="#nav-profile" role="tab"
-                                                                        aria-controls="nav-profile"
+                                                                    <a class="nav-item nav-link" id="nav-d3-tab"
+                                                                        data-toggle="tab" href="#nav-d3" role="tab"
+                                                                        aria-controls="nav-d3"
                                                                         aria-selected="false">Diterima</a>
                                                                     <a class="nav-item nav-link active show"
-                                                                        id="nav-contact-tab" data-toggle="tab"
-                                                                        href="#nav-contact" role="tab"
-                                                                        aria-controls="nav-contact"
+                                                                        id="nav-r3-tab" data-toggle="tab"
+                                                                        href="#nav-r3" role="tab"
+                                                                        aria-controls="nav-r3"
                                                                         aria-selected="true">Registrasi</a>
                                                                 </div>
                                                             </nav>
                                                             <div class="tab-content pl-3 pt-2" id="nav-tabContent">
-                                                                <div class="tab-pane fade" id="p1-home" role="tabpanel"
+                                                                <div class="tab-pane fade" id="p1-p3" role="tabpanel"
                                                                     aria-labelledby="p1-tab">
                                                                     <div class="progress-box progress-1">
-                                                                        <h4 class="por-title">Kedokteran</h4>
-                                                                        <div class="por-txt">130 Mahasiswa</div>
+                                                                        <h4 class="por-title"><?php echo $values[6]['j1'] ?></h4>
+                                                                        <div class="por-txt"><?php echo $values[6]['p1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-1"
                                                                                 role="progressbar" style="width: 40%;"
@@ -568,8 +568,8 @@ require_once("conn.php");
                                                                         </div>
                                                                     </div>
                                                                     <div class="progress-box progress-2">
-                                                                        <h4 class="por-title">Informatika</h4>
-                                                                        <div class="por-txt">700 Mahasiswa</div>
+                                                                        <h4 class="por-title"><?php echo $values[7]['j1'] ?></h4>
+                                                                        <div class="por-txt"><?php echo $values[7]['p1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-4"
                                                                                 role="progressbar" style="width: 24%;"
@@ -578,8 +578,8 @@ require_once("conn.php");
                                                                         </div>
                                                                     </div>
                                                                     <div class="progress-box progress-2">
-                                                                        <h4 class="por-title">Sistem Informasi</h4>
-                                                                        <div class="por-txt">300 Mahasiswa</div>
+                                                                        <h4 class="por-title"><?php echo $values[8]['j1'] ?></h4>
+                                                                        <div class="por-txt"><?php echo $values[8]['p1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-2"
                                                                                 role="progressbar" style="width: 60%;"
@@ -592,11 +592,11 @@ require_once("conn.php");
                                                                             class="btn btn-primary">Selengkapnya</button>
                                                                     </div>
                                                                 </div>
-                                                                <div class="tab-pane fade" id="nav-profile"
-                                                                    role="tabpanel" aria-labelledby="nav-profile-tab">
+                                                                <div class="tab-pane fade" id="nav-d3"
+                                                                    role="tabpanel" aria-labelledby="nav-d3-tab">
                                                                     <div class="progress-box progress-1">
-                                                                        <h4 class="por-title">Kedokteran</h4>
-                                                                        <div class="por-txt">1300 Mahasiswa</div>
+                                                                        <h4 class="por-title"><?php echo $values[6]['j1'] ?></h4>
+                                                                        <div class="por-txt"><?php echo $values[6]['d1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-1"
                                                                                 role="progressbar" style="width: 40%;"
@@ -605,8 +605,8 @@ require_once("conn.php");
                                                                         </div>
                                                                     </div>
                                                                     <div class="progress-box progress-2">
-                                                                        <h4 class="por-title">Informatika</h4>
-                                                                        <div class="por-txt">700 Mahasiswa</div>
+                                                                        <h4 class="por-title"><?php echo $values[7]['j1'] ?></h4>
+                                                                        <div class="por-txt"><?php echo $values[7]['d1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-4"
                                                                                 role="progressbar" style="width: 24%;"
@@ -615,8 +615,8 @@ require_once("conn.php");
                                                                         </div>
                                                                     </div>
                                                                     <div class="progress-box progress-2">
-                                                                        <h4 class="por-title">Sistem Informasi</h4>
-                                                                        <div class="por-txt">300 Mahasiswa</div>
+                                                                        <h4 class="por-title"><?php echo $values[8]['j1'] ?></h4>
+                                                                        <div class="por-txt"><?php echo $values[8]['d1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-2"
                                                                                 role="progressbar" style="width: 60%;"
@@ -629,11 +629,11 @@ require_once("conn.php");
                                                                             class="btn btn-primary">Selengkapnya</button>
                                                                     </div>
                                                                 </div>
-                                                                <div class="tab-pane fade active show" id="nav-contact"
-                                                                    role="tabpanel" aria-labelledby="nav-contact-tab">
+                                                                <div class="tab-pane fade active show" id="nav-r3"
+                                                                    role="tabpanel" aria-labelledby="nav-r3-tab">
                                                                     <div class="progress-box progress-1">
-                                                                        <h4 class="por-title">Kedokteran</h4>
-                                                                        <div class="por-txt">1300 Mahasiswa</div>
+                                                                        <h4 class="por-title"><?php echo $values[6]['j1'] ?></h4>
+                                                                        <div class="por-txt"><?php echo $values[6]['r1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-1"
                                                                                 role="progressbar" style="width: 40%;"
@@ -642,8 +642,8 @@ require_once("conn.php");
                                                                         </div>
                                                                     </div>
                                                                     <div class="progress-box progress-2">
-                                                                        <h4 class="por-title">Informatika</h4>
-                                                                        <div class="por-txt">700 Mahasiswa</div>
+                                                                        <h4 class="por-title"><?php echo $values[7]['j1'] ?></h4>
+                                                                        <div class="por-txt"><?php echo $values[7]['r1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-4"
                                                                                 role="progressbar" style="width: 24%;"
@@ -652,8 +652,8 @@ require_once("conn.php");
                                                                         </div>
                                                                     </div>
                                                                     <div class="progress-box progress-2">
-                                                                        <h4 class="por-title">Sistem Informasi</h4>
-                                                                        <div class="por-txt">300 Mahasiswa</div>
+                                                                        <h4 class="por-title"><?php echo $values[8]['j1'] ?></h4>
+                                                                        <div class="por-txt"><?php echo $values[8]['r1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-2"
                                                                                 role="progressbar" style="width: 60%;"
