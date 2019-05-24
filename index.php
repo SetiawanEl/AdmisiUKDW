@@ -183,8 +183,9 @@ require_once("conn.php");
                                     <div class="row">
                                         <div class="col-lg-7">
                                             <div class="card-body">
-                                                <!-- <canvas id="TrafficChart"></canvas>   -->
-                                                <div id="traffic-chart" class="traffic-chart"></div>
+                                            <div class="container">
+                                            <canvas id="Trend1" width="200" height="150"></canvas>
+                                            </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
@@ -336,8 +337,17 @@ require_once("conn.php");
                                                                         </div>
                                                                     </div>
                                                                     <div class="progress-box progress-2 float-right">
-                                                                        <button type="button"
-                                                                            class="btn btn-primary">Selengkapnya</button>
+                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Selengkapnya</button>
+
+<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="container col-8">
+      <canvas id="Trend2Full" width="20" height="15"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -364,8 +374,12 @@ require_once("conn.php");
                                     <div class="row">
                                         <div class="col-lg-7">
                                             <div class="card-body">
+                                            <div class="container">
+                                            <canvas id="Trend2" width="200" height="150"></canvas>
+                                            </div>
                                                 <!-- <canvas id="TrafficChart"></canvas>   -->
-                                                <div id="traffic-chart2" class="traffic-chart"></div>
+                                                
+                               
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
@@ -500,8 +514,7 @@ require_once("conn.php");
                                                                     </div>
                                                                     <?php } ?>
                                                                     <div class="progress-box progress-2 float-right">
-                                                                        <button type="button"
-                                                                            class="btn btn-primary">Selengkapnya</button>
+                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#">Selengkapnya</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -528,8 +541,9 @@ require_once("conn.php");
                                     <div class="row">
                                         <div class="col-lg-7">
                                             <div class="card-body">
-                                                <!-- <canvas id="TrafficChart"></canvas>   -->
-                                                <div id="traffic-cha" class="traffic-cha"></div>
+                                            <div class="container">
+                                            <canvas id="Trend3" width="200" height="150"></canvas>
+                                            </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
@@ -690,106 +704,12 @@ require_once("conn.php");
                         <div class="col-xl-8">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="box-title">Orders </h4>
+                                    <h4 class="box-title">Provinsi </h4>
                                 </div>
                                 <div class="card-body--">
-                                    <div class="table-stats order-table ov-h">
-                                        <table class="table ">
-                                            <thead>
-                                                <tr>
-                                                    <th class="serial">#</th>
-                                                    <th class="avatar">Avatar</th>
-                                                    <th>ID</th>
-                                                    <th>Name</th>
-                                                    <th>Product</th>
-                                                    <th>Quantity</th>
-                                                    <th>Status</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="serial">1.</td>
-                                                    <td class="avatar">
-                                                        <div class="round-img">
-                                                            <a href="#"><img class="rounded-circle"
-                                                                    src="images/avatar/1.jpg" alt=""></a>
-                                                        </div>
-                                                    </td>
-                                                    <td> #5469 </td>
-                                                    <td> <span class="name">Louis Stanley</span> </td>
-                                                    <td> <span class="product">iMax</span> </td>
-                                                    <td><span class="count">231</span></td>
-                                                    <td>
-                                                        <span class="badge badge-complete">Complete</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="serial">2.</td>
-                                                    <td class="avatar">
-                                                        <div class="round-img">
-                                                            <a href="#"><img class="rounded-circle"
-                                                                    src="images/avatar/2.jpg" alt=""></a>
-                                                        </div>
-                                                    </td>
-                                                    <td> #5468 </td>
-                                                    <td> <span class="name">Gregory Dixon</span> </td>
-                                                    <td> <span class="product">iPad</span> </td>
-                                                    <td><span class="count">250</span></td>
-                                                    <td>
-                                                        <span class="badge badge-complete">Complete</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="serial">3.</td>
-                                                    <td class="avatar">
-                                                        <div class="round-img">
-                                                            <a href="#"><img class="rounded-circle"
-                                                                    src="images/avatar/3.jpg" alt=""></a>
-                                                        </div>
-                                                    </td>
-                                                    <td> #5467 </td>
-                                                    <td> <span class="name">Catherine Dixon</span> </td>
-                                                    <td> <span class="product">SSD</span> </td>
-                                                    <td><span class="count">250</span></td>
-                                                    <td>
-                                                        <span class="badge badge-complete">Complete</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="serial">4.</td>
-                                                    <td class="avatar">
-                                                        <div class="round-img">
-                                                            <a href="#"><img class="rounded-circle"
-                                                                    src="images/avatar/4.jpg" alt=""></a>
-                                                        </div>
-                                                    </td>
-                                                    <td> #5466 </td>
-                                                    <td> <span class="name">Mary Silva</span> </td>
-                                                    <td> <span class="product">Magic Mouse</span> </td>
-                                                    <td><span class="count">250</span></td>
-                                                    <td>
-                                                        <span class="badge badge-pending">Pending</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class=" pb-0">
-                                                    <td class="serial">5.</td>
-                                                    <td class="avatar pb-0">
-                                                        <div class="round-img">
-                                                            <a href="#"><img class="rounded-circle"
-                                                                    src="images/avatar/6.jpg" alt=""></a>
-                                                        </div>
-                                                    </td>
-                                                    <td> #5465 </td>
-                                                    <td> <span class="name">Johnny Stephens</span> </td>
-                                                    <td> <span class="product">Monitor</span> </td>
-                                                    <td><span class="count">250</span></td>
-                                                    <td>
-                                                        <span class="badge badge-complete">Complete</span>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div> <!-- /.table-stats -->
+                                <div class="container mb-2">
+                                <canvas id="Provinsi" width="200" height="117"></canvas>
+                                </div>
                                 </div>
                             </div> <!-- /.card -->
                         </div> <!-- /.col-lg-8 -->
@@ -800,7 +720,7 @@ require_once("conn.php");
                                     <div class="card br-0">
                                         <div class="card-body">
                                             <div class="chart-container ov-h">
-                                                <div id="flotPie1" class="float-chart"></div>
+                                            <canvas id="ICE" width="200" height="117"></canvas>
                                             </div>
                                         </div>
                                     </div><!-- /.card -->
@@ -905,6 +825,11 @@ require("layout/footer.php");
     
 </body>
 <?php 
-require("data.php");
+require("data/trend1.php");
+require("data/trend2.php");
+require("data/trend3.php");
+require("data/trend1full.php");
+require("data/trend2full.php");
+require("data/trend3full.php");
 ?>
 </html>
