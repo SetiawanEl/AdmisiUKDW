@@ -30,9 +30,8 @@ require_once("conn.php");
         <header id="header" class="header">
             <div class="top-left">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="./"><img src="images/lg.png" alt="Logo"></a>
+                    <a class="navbar-brand" href="./"><i class="fa fa-pie-chart mr-2" style="color:#0094C6"></i>Admisi UKDW</a>
                     <a class="navbar-brand hidden" href="./"><img src="images/favi.png" alt="Logo"></a>
-                    <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
                 </div>
             </div>
             <div class="top-right">
@@ -95,6 +94,11 @@ require_once("conn.php");
                                         <div class="text-left dib">
                                             <div class="stat-text">Rp. <?php echo $row['sumb'] ?> M</div>
                                             <div class="stat-heading">Sumbangan</div>
+                                            <a href="#">
+                                            <div class="back">
+                                                <p class="ml-3 mr-3">Total Sumbangan Masuk</p>
+                                            </div>
+                                            </a>
                                         </div>
                                         <?php } ?>
                                     </div>
@@ -120,6 +124,11 @@ require_once("conn.php");
                                         <div class="text-left dib">
                                             <div class="stat-text"><?php echo $row['reg'] ?></div>
                                             <div class="stat-heading">Mahasiswa</div>
+                                            <a href="#">
+                                            <div class="back">
+                                                <p>Total Mahasiswa Registrasi</p>
+                                            </div>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -221,20 +230,65 @@ require_once("conn.php");
                                                                         UNION 
                                                                         (SELECT b.Jurusan_2 as j2, b.Pendaftar as p2, b.Diterima as d2, b.Regis as r2 FROM trend_2 b LIMIT 3)
                                                                         UNION 
-                                                                        (SELECT c.Jurusan_3 as j3, c.Pendaftar as p3, c.Diterima as d3, c.Regis as r3 from trend_3 c LIMIT 3)");
+                                                                        (SELECT c.Jurusan_3 as j3, c.Pendaftar as p3, c.Diterima as d3, c.Regis as r3 from trend_3 c LIMIT 3)
+                                                                        UNION
+                                                                        (select t2.Jurusan_2 as jr2, t2.Pendaftar as pn2, t2.Diterima as dt2, t2.Regis as rg2 from trend_2 t2)
+                                                                        UNION
+                                                                        (select t.ICE1 as a, t.ICE2 as b, t.ICE3 as c, t.ESP as d from trend_1 t)");
                                                                         while ($row = mysqli_fetch_assoc($result)) {
                                                                         $values[]=$row;
                                                                            
                                                                                     }
                                                                             mysqli_free_result($result);
                                                                                     { 
+                                                                                        // progress bar trend 1
+                                                                                        $p=$values[0]['p1']+$values[1]['p1']+$values[2]['p1'];
+                                                                                        $p10=$values[0]['p1']/$p*100;
+                                                                                        $p11=$values[1]['p1']/$p*100;
+                                                                                        $p12=$values[2]['p1']/$p*100;
+
+                                                                                        $d10=$values[0]['d1']/$p*100;
+                                                                                        $d11=$values[1]['d1']/$p*100;
+                                                                                        $d12=$values[2]['d1']/$p*100;
+
+                                                                                        $r10=$values[0]['r1']/$p*100;
+                                                                                        $r11=$values[1]['r1']/$p*100;
+                                                                                        $r12=$values[2]['r1']/$p*100;
+
+                                                                                        // progress bar trend 2
+                                                                                        $q=$values[3]['p1']+$values[4]['p1']+$values[5]['p1'];
+                                                                                        $p20=$values[3]['p1']/$q*100;
+                                                                                        $p21=$values[4]['p1']/$q*100;
+                                                                                        $p22=$values[5]['p1']/$q*100;
+
+                                                                                        $d20=$values[3]['d1']/$q*100;
+                                                                                        $d21=$values[4]['d1']/$q*100;
+                                                                                        $d22=$values[5]['d1']/$q*100;
+
+                                                                                        $r20=$values[3]['r1']/$q*100;
+                                                                                        $r21=$values[4]['r1']/$q*100;
+                                                                                        $r22=$values[5]['r1']/$q*100;
+
+                                                                                        // progress bar trend 3
+                                                                                        $r=$values[6]['p1']+$values[7]['p1']+$values[8]['p1'];
+                                                                                        $p30=$values[6]['p1']/$r*100;
+                                                                                        $p31=$values[7]['p1']/$r*100;
+                                                                                        $p32=$values[8]['p1']/$r*100;
+
+                                                                                        $d30=$values[6]['d1']/$r*100;
+                                                                                        $d31=$values[7]['d1']/$r*100;
+                                                                                        $d32=$values[8]['d1']/$r*100;
+
+                                                                                        $r30=$values[6]['r1']/$r*100;
+                                                                                        $r31=$values[7]['r1']/$r*100;
+                                                                                        $r32=$values[8]['r1']/$r*100;
                                              
                                                                     ?>
                                                                         <h4 class="por-title"><?php echo $values[0]['j1'] ?></h4>
                                                                         <div class="por-txt"><?php echo $values[0]['p1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-1"
-                                                                                role="progressbar" style="width: 40%;"
+                                                                                role="progressbar" style="width: <?php echo $p10?>%;"
                                                                                 aria-valuenow="25" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
@@ -245,7 +299,7 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[1]['p1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-4"
-                                                                                role="progressbar" style="width: 24%;"
+                                                                                role="progressbar" style="width: <?php echo $p11?>%;"
                                                                                 aria-valuenow="25" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
@@ -255,15 +309,10 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[2]['p1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-2"
-                                                                                role="progressbar" style="width: 60%;"
+                                                                                role="progressbar" style="width: <?php echo $p12?>%;"
                                                                                 aria-valuenow="60" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
-                                                                    </div>
-                                                                    
-                                                                    <div class="progress-box progress-2 float-right">
-                                                                        <button type="button"
-                                                                            class="btn btn-primary">Selengkapnya</button>
                                                                     </div>
                                                                     
                                                                 </div>
@@ -274,7 +323,7 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[0]['d1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-1"
-                                                                                role="progressbar" style="width: 40%;"
+                                                                                role="progressbar" style="width: <?php echo $d10?>%;"
                                                                                 aria-valuenow="25" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
@@ -284,7 +333,7 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[1]['d1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-4"
-                                                                                role="progressbar" style="width: 24%;"
+                                                                                role="progressbar" style="width: <?php echo $d11?>%;"
                                                                                 aria-valuenow="25" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
@@ -294,14 +343,10 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[2]['d1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-2"
-                                                                                role="progressbar" style="width: 60%;"
+                                                                                role="progressbar" style="width: <?php echo $d12?>%;"
                                                                                 aria-valuenow="60" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="progress-box progress-2 float-right">
-                                                                        <button type="button"
-                                                                            class="btn btn-primary">Selengkapnya</button>
                                                                     </div>
                                                                 </div>
                                                                 <div class="tab-pane fade active show" id="nav-contact"
@@ -311,7 +356,7 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[0]['r1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-1"
-                                                                                role="progressbar" style="width: 40%;"
+                                                                                role="progressbar" style="width: <?php echo $r10?>%;"
                                                                                 aria-valuenow="25" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
@@ -321,7 +366,7 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[1]['r1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-4"
-                                                                                role="progressbar" style="width: 24%;"
+                                                                                role="progressbar" style="width: <?php echo $r11?>%;"
                                                                                 aria-valuenow="25" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
@@ -331,27 +376,16 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[2]['r1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-2"
-                                                                                role="progressbar" style="width: 60%;"
+                                                                                role="progressbar" style="width: <?php echo $r12?>%;"
                                                                                 aria-valuenow="60" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="progress-box progress-2 float-right">
-                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Selengkapnya</button>
-
-<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="container col-8">
-      <canvas id="Trend2Full" width="20" height="15"></canvas>
-      </div>
-    </div>
-  </div>
-</div>
-                                                                    </div>
                                                                 </div>
                                                             </div>
-
+                                                                    <div class="progress-box progress-2 float-right">
+                                                                    <a href="trend1full.php" class="btn btn-primary">Selengkapnya</a>
+                                                                    </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -413,7 +447,7 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[3]['p1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-1"
-                                                                                role="progressbar" style="width: 40%;"
+                                                                                role="progressbar" style="width: <?php echo $p20?>%;"
                                                                                 aria-valuenow="25" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
@@ -423,7 +457,7 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[4]['p1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-4"
-                                                                                role="progressbar" style="width: 24%;"
+                                                                                role="progressbar" style="width: <?php echo $p21?>%;"
                                                                                 aria-valuenow="25" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
@@ -433,14 +467,10 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[5]['p1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-2"
-                                                                                role="progressbar" style="width: 60%;"
+                                                                                role="progressbar" style="width: <?php echo $p22?>%;"
                                                                                 aria-valuenow="60" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="progress-box progress-2 float-right">
-                                                                        <button type="button"
-                                                                            class="btn btn-primary">Selengkapnya</button>
                                                                     </div>
                                                                 </div>
                                                                 <div class="tab-pane fade" id="nav-r1"
@@ -450,7 +480,7 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[3]['d1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-1"
-                                                                                role="progressbar" style="width: 40%;"
+                                                                                role="progressbar" style="width: <?php echo $d20?>%;"
                                                                                 aria-valuenow="25" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
@@ -460,7 +490,7 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[4]['d1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-4"
-                                                                                role="progressbar" style="width: 24%;"
+                                                                                role="progressbar" style="width: <?php echo $d21?>%;"
                                                                                 aria-valuenow="25" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
@@ -470,14 +500,10 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[5]['d1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-2"
-                                                                                role="progressbar" style="width: 60%;"
+                                                                                role="progressbar" style="width: <?php echo $d22?>%;"
                                                                                 aria-valuenow="60" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="progress-box progress-2 float-right">
-                                                                        <button type="button"
-                                                                            class="btn btn-primary">Selengkapnya</button>
                                                                     </div>
                                                                 </div>
                                                                 <div class="tab-pane fade active show" id="nav-s1"
@@ -487,7 +513,7 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[3]['r1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-1"
-                                                                                role="progressbar" style="width: 40%;"
+                                                                                role="progressbar" style="width: <?php echo $r20?>%;"
                                                                                 aria-valuenow="25" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
@@ -497,7 +523,7 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[4]['r1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-4"
-                                                                                role="progressbar" style="width: 24%;"
+                                                                                role="progressbar" style="width: <?php echo $r21?>%;"
                                                                                 aria-valuenow="25" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
@@ -507,16 +533,16 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[5]['r1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-2"
-                                                                                role="progressbar" style="width: 60%;"
+                                                                                role="progressbar" style="width: <?php echo $r22?>%;"
                                                                                 aria-valuenow="60" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
                                                                     </div>
                                                                     <?php } ?>
+                                                                </div>
                                                                     <div class="progress-box progress-2 float-right">
                                                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#">Selengkapnya</button>
                                                                     </div>
-                                                                </div>
                                                             </div>
 
                                                         </div>
@@ -576,7 +602,7 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[6]['p1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-1"
-                                                                                role="progressbar" style="width: 40%;"
+                                                                                role="progressbar" style="width: <?php echo $p30?>%;"
                                                                                 aria-valuenow="25" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
@@ -586,7 +612,7 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[7]['p1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-4"
-                                                                                role="progressbar" style="width: 24%;"
+                                                                                role="progressbar" style="width: <?php echo $p31?>%;"
                                                                                 aria-valuenow="25" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
@@ -596,14 +622,10 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[8]['p1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-2"
-                                                                                role="progressbar" style="width: 60%;"
+                                                                                role="progressbar" style="width: <?php echo $p32?>%;"
                                                                                 aria-valuenow="60" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="progress-box progress-2 float-right">
-                                                                        <button type="button"
-                                                                            class="btn btn-primary">Selengkapnya</button>
                                                                     </div>
                                                                 </div>
                                                                 <div class="tab-pane fade" id="nav-d3"
@@ -613,7 +635,7 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[6]['d1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-1"
-                                                                                role="progressbar" style="width: 40%;"
+                                                                                role="progressbar" style="width: <?php echo $d30?>%;"
                                                                                 aria-valuenow="25" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
@@ -623,7 +645,7 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[7]['d1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-4"
-                                                                                role="progressbar" style="width: 24%;"
+                                                                                role="progressbar" style="width: <?php echo $d31?>%;"
                                                                                 aria-valuenow="25" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
@@ -633,14 +655,10 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[8]['d1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-2"
-                                                                                role="progressbar" style="width: 60%;"
+                                                                                role="progressbar" style="width: <?php echo $d32?>%;"
                                                                                 aria-valuenow="60" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="progress-box progress-2 float-right">
-                                                                        <button type="button"
-                                                                            class="btn btn-primary">Selengkapnya</button>
                                                                     </div>
                                                                 </div>
                                                                 <div class="tab-pane fade active show" id="nav-r3"
@@ -650,7 +668,7 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[6]['r1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-1"
-                                                                                role="progressbar" style="width: 40%;"
+                                                                                role="progressbar" style="width: <?php echo $r30?>%;"
                                                                                 aria-valuenow="25" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
@@ -660,7 +678,7 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[7]['r1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-4"
-                                                                                role="progressbar" style="width: 24%;"
+                                                                                role="progressbar" style="width: r31%;"
                                                                                 aria-valuenow="25" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
@@ -670,16 +688,16 @@ require_once("conn.php");
                                                                         <div class="por-txt"><?php echo $values[8]['r1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
                                                                             <div class="progress-bar bg-flat-color-2"
-                                                                                role="progressbar" style="width: 60%;"
+                                                                                role="progressbar" style="width: r32%;"
                                                                                 aria-valuenow="60" aria-valuemin="0"
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
                                                                     </div>
+                                                                </div>
                                                                     <div class="progress-box progress-2 float-right">
                                                                         <button type="button"
                                                                             class="btn btn-primary">Selengkapnya</button>
                                                                     </div>
-                                                                </div>
                                                             </div>
 
                                                         </div>
@@ -700,44 +718,42 @@ require_once("conn.php");
                 <div class="clearfix"></div>
                 <!-- Orders -->
                 <div class="orders">
+                <div class="container">
+                    <p><b>Data Mahasiswa Registrasi</b></p>
+                </div>
                     <div class="row">
-                        <div class="col-xl-8">
+                    <div class="col-xl-4">
+                            <div class="card">
+                                <a href="google.com">
+                                <div class="card-body">
+                                <p><b>Provinsi</b></p>
+                                <div class="container mb-2">
+                                <canvas id="Provinsi" width="200" height="100"></canvas>
+                                </div>
+                                </div>
+                                </a>
+                            </div>
+                        </div> 
+                        <div class="col-xl-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="box-title">Provinsi </h4>
-                                </div>
-                                <div class="card-body--">
+                                <p><b>Agama</b></p>
                                 <div class="container mb-2">
-                                <canvas id="Provinsi" width="200" height="117"></canvas>
+                                <canvas id="Agama" width="200" height="100"></canvas>
                                 </div>
-                                </div>
-                            </div> <!-- /.card -->
-                        </div> <!-- /.col-lg-8 -->
-
-                        <div class="col-xl-4">
-                            <div class="row">
-                                <div class="col-lg-6 col-xl-12">
-                                    <div class="card br-0">
-                                        <div class="card-body">
-                                            <div class="chart-container ov-h">
-                                            <canvas id="ICE" width="200" height="117"></canvas>
-                                            </div>
-                                        </div>
-                                    </div><!-- /.card -->
-                                </div>
-
-                                <div class="col-lg-6 col-xl-12">
-                                    <div class="card bg-flat-color-3  ">
-                                        <div class="card-body">
-                                            <h4 class="card-title m-0  white-color ">August 2018</h4>
-                                        </div>
-                                        <div class="card-body">
-                                            <div id="flotLine5" class="flot-line"></div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
-                        </div> <!-- /.col-md-4 -->
+                        </div> 
+                        <div class="col-xl-4">
+                            <div class="card">
+                                <div class="card-body">
+                                <p><b>ICE</b></p>
+                                <div class="container mb-2">
+                                <canvas id="ICE" width="200" height="100"></canvas>
+                                </div>
+                                </div>
+                            </div>
+                        </div> 
                     </div>
                 </div>
                 <!-- /.orders -->
@@ -831,5 +847,8 @@ require("data/trend3.php");
 require("data/trend1full.php");
 require("data/trend2full.php");
 require("data/trend3full.php");
+require("data/ice.php");
+require("data/provinsi.php");
+require("data/agama.php");
 ?>
 </html>

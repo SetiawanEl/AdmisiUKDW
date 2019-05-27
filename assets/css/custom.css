@@ -1,0 +1,92 @@
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+
+
+.front,
+.back {
+    width: 100%;
+    height: 100%;
+}
+
+/* Front */
+.front {}
+
+.front img {
+    max-height: 200px;
+    width: auto;
+}
+
+.front p:before {
+    font-family: "entypo";
+    margin-right: 5px;
+    background: #0A6E3B;
+    height: 40px;
+    width: 40px;
+    font-size: 20px;
+    display: block;
+    text-align: center;
+    float: left;
+    border-right: 1px solid #51D491;
+}
+
+.front p {
+    position: relative;
+    top: -60px;
+    background: #1DA962;
+    line-height: 40px;
+
+    transition: all .4s;
+}
+
+/* back */
+.back {
+    opacity: 0;
+    background: #0094C6;
+    position: absolute;
+    overflow: hidden;
+    border-radius: 5px;
+    top: 0;
+    left: 0;
+
+    transition: all .2s linear;
+}
+
+
+.back p {
+    font-size: 18px;
+    text-align: center;
+    color: white;
+    margin: 0 5px;
+    position: relative;
+    top: 200px;
+
+    transition: all .2s linear .1s;
+}
+
+/* effect */
+.card-body:hover {
+    cursor: pointer;
+}
+
+.card-body:hover .front p {
+    top: 0;
+}
+
+.card-body .back:hover {
+    opacity: 1;
+}
+
+.card-body .back:hover h1:before,
+.card-body .back:hover p {
+    margin: 2 2 2 2;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+}
+
+.card-body .back:hover h1:before {
+    transform: scale(1);
+}
