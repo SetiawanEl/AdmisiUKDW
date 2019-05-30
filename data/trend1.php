@@ -11,6 +11,7 @@
                             { 
                                              
             ?>
+            Chart.defaults.global.legend.labels.usePointStyle = true;
 var ctx = document.getElementById('Trend1').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'line',
