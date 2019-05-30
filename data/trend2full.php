@@ -9,9 +9,10 @@
                             { 
                                              
             ?>
-var ctx = document.getElementById('Trend1Full').getContext('2d');
+Chart.defaults.global.legend.labels.usePointStyle = true;
+var ctx = document.getElementById('Trend2Full').getContext('2d');
 var myChart = new Chart(ctx, {
-    type: 'line',
+    type: 'bar',
     data: {
         labels: ['Pendaftar', 'Diterima', 'Registrasi'],
         datasets: [{
@@ -20,11 +21,7 @@ var myChart = new Chart(ctx, {
                 fill: false,
                 backgroundColor: [
                     '#261447','#261447','#261447'
-                ],
-                borderColor: [
-                    '#261447','#261447','#261447'
-                ],
-                borderWidth: 2
+                ]
             },
             {
                 label: '<?php echo $values[1]['j1'] ?>',
@@ -32,11 +29,7 @@ var myChart = new Chart(ctx, {
                 fill: false,
                 backgroundColor: [
                     '#FF3864','#FF3864','#FF3864'
-                ],
-                borderColor: [
-                    '#FF3864','#FF3864','#FF3864'
-                ],
-                borderWidth: 2
+                ]
             },
             {
                 label: '<?php echo $values[2]['j1'] ?>',
@@ -44,11 +37,7 @@ var myChart = new Chart(ctx, {
                 fill: false,
                 backgroundColor: [
                     '#90A959','#90A959','#90A959'
-                ],
-                borderColor: [
-                    '#90A959','#90A959','#90A959'
-                ],
-                borderWidth: 2
+                ]
             },
             {
                 label: '<?php echo $values[3]['j1'] ?>',
@@ -56,11 +45,7 @@ var myChart = new Chart(ctx, {
                 fill: false,
                 backgroundColor: [
                     '#E9B872','#E9B872','#E9B872'
-                ],
-                borderColor: [
-                    '#E9B872','#E9B872','#E9B872'
-                ],
-                borderWidth: 2
+                ]
             },
             {
                 label: '<?php echo $values[4]['j1'] ?>',
@@ -68,11 +53,7 @@ var myChart = new Chart(ctx, {
                 fill: false,
                 backgroundColor: [
                     '#6494AA','#6494AA','#6494AA'
-                ],
-                borderColor: [
-                    '#6494AA','#6494AA','#6494AA'
-                ],
-                borderWidth: 2
+                ]
             },
             {
                 label: '<?php echo $values[5]['j1'] ?>',
@@ -80,11 +61,7 @@ var myChart = new Chart(ctx, {
                 fill: false,
                 backgroundColor: [
                     '#753742','#753742','#753742'
-                ],
-                borderColor: [
-                    '#753742','#753742','#753742'
-                ],
-                borderWidth: 2
+                ]
             },
             {
                 label: '<?php echo $values[6]['j1'] ?>',
@@ -92,11 +69,7 @@ var myChart = new Chart(ctx, {
                 fill: false,
                 backgroundColor: [
                     '#A5FFD6','#A5FFD6','#A5FFD6'
-                ],
-                borderColor: [
-                    '#A5FFD6','#A5FFD6','#A5FFD6'
-                ],
-                borderWidth: 2
+                ]
             },
             {
                 label: '<?php echo $values[7]['j1'] ?>',
@@ -104,11 +77,7 @@ var myChart = new Chart(ctx, {
                 fill: false,
                 backgroundColor: [
                     '#7D83FF','#7D83FF','#7D83FF'
-                ],
-                borderColor: [
-                    '#7D83FF','#7D83FF','#7D83FF'
-                ],
-                borderWidth: 2
+                ]
             },
             {
                 label: '<?php echo $values[8]['j1'] ?>',
@@ -116,11 +85,7 @@ var myChart = new Chart(ctx, {
                 fill: false,
                 backgroundColor: [
                     '#231C07','#231C07','#231C07'
-                ],
-                borderColor: [
-                    '#231C07','#231C07','#231C07'
-                ],
-                borderWidth: 2
+                ]
             }
         ],
         

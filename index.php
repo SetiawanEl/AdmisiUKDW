@@ -4,6 +4,9 @@ require_once('layout/header.php');
 <?php 
 require_once("conn.php");
 ?>
+<?php 
+require_once("syntax.php");
+?>
 
 
 <body>
@@ -224,66 +227,7 @@ require_once("conn.php");
                                                                 <div class="tab-pane fade" id="nav-home" role="tabpanel"
                                                                     aria-labelledby="nav-home-tab">
                                                                     <div class="progress-box progress-1">
-                                                                    <?php
-                                                                        $no= 1;
-                                                                        $result = $conn->query("(select a.Jurusan_1 as j1, a.Pendaftar as p1, a.Diterima as d1,a.Regis as r1 FROM trend_1 a LIMIT 3)
-                                                                        UNION 
-                                                                        (SELECT b.Jurusan_2 as j2, b.Pendaftar as p2, b.Diterima as d2, b.Regis as r2 FROM trend_2 b LIMIT 3)
-                                                                        UNION 
-                                                                        (SELECT c.Jurusan_3 as j3, c.Pendaftar as p3, c.Diterima as d3, c.Regis as r3 from trend_3 c LIMIT 3)
-                                                                        UNION
-                                                                        (select t2.Jurusan_2 as jr2, t2.Pendaftar as pn2, t2.Diterima as dt2, t2.Regis as rg2 from trend_2 t2)
-                                                                        UNION
-                                                                        (select t.ICE1 as a, t.ICE2 as b, t.ICE3 as c, t.ESP as d from trend_1 t)");
-                                                                        while ($row = mysqli_fetch_assoc($result)) {
-                                                                        $values[]=$row;
-                                                                           
-                                                                                    }
-                                                                            mysqli_free_result($result);
-                                                                                    { 
-                                                                                        // progress bar trend 1
-                                                                                        $p=$values[0]['p1']+$values[1]['p1']+$values[2]['p1'];
-                                                                                        $p10=$values[0]['p1']/$p*100;
-                                                                                        $p11=$values[1]['p1']/$p*100;
-                                                                                        $p12=$values[2]['p1']/$p*100;
-
-                                                                                        $d10=$values[0]['d1']/$p*100;
-                                                                                        $d11=$values[1]['d1']/$p*100;
-                                                                                        $d12=$values[2]['d1']/$p*100;
-
-                                                                                        $r10=$values[0]['r1']/$p*100;
-                                                                                        $r11=$values[1]['r1']/$p*100;
-                                                                                        $r12=$values[2]['r1']/$p*100;
-
-                                                                                        // progress bar trend 2
-                                                                                        $q=$values[3]['p1']+$values[4]['p1']+$values[5]['p1'];
-                                                                                        $p20=$values[3]['p1']/$q*100;
-                                                                                        $p21=$values[4]['p1']/$q*100;
-                                                                                        $p22=$values[5]['p1']/$q*100;
-
-                                                                                        $d20=$values[3]['d1']/$q*100;
-                                                                                        $d21=$values[4]['d1']/$q*100;
-                                                                                        $d22=$values[5]['d1']/$q*100;
-
-                                                                                        $r20=$values[3]['r1']/$q*100;
-                                                                                        $r21=$values[4]['r1']/$q*100;
-                                                                                        $r22=$values[5]['r1']/$q*100;
-
-                                                                                        // progress bar trend 3
-                                                                                        $r=$values[6]['p1']+$values[7]['p1']+$values[8]['p1'];
-                                                                                        $p30=$values[6]['p1']/$r*100;
-                                                                                        $p31=$values[7]['p1']/$r*100;
-                                                                                        $p32=$values[8]['p1']/$r*100;
-
-                                                                                        $d30=$values[6]['d1']/$r*100;
-                                                                                        $d31=$values[7]['d1']/$r*100;
-                                                                                        $d32=$values[8]['d1']/$r*100;
-
-                                                                                        $r30=$values[6]['r1']/$r*100;
-                                                                                        $r31=$values[7]['r1']/$r*100;
-                                                                                        $r32=$values[8]['r1']/$r*100;
-                                             
-                                                                    ?>
+                                                                    <!-- kene -->
                                                                         <h4 class="por-title"><?php echo $values[0]['j1'] ?></h4>
                                                                         <div class="por-txt"><?php echo $values[0]['p1'] ?> Mahasiswa</div>
                                                                         <div class="progress mb-2" style="height: 5px;">
@@ -538,10 +482,9 @@ require_once("conn.php");
                                                                                 aria-valuemax="100"></div>
                                                                         </div>
                                                                     </div>
-                                                                    <?php } ?>
                                                                 </div>
                                                                     <div class="progress-box progress-2 float-right">
-                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#">Selengkapnya</button>
+                                                                    <a href="trend2full.php" class="btn btn-primary">Selengkapnya</a>
                                                                     </div>
                                                             </div>
 
@@ -695,8 +638,7 @@ require_once("conn.php");
                                                                     </div>
                                                                 </div>
                                                                     <div class="progress-box progress-2 float-right">
-                                                                        <button type="button"
-                                                                            class="btn btn-primary">Selengkapnya</button>
+                                                                    <a href="trend3full.php" class="btn btn-primary">Selengkapnya</a>
                                                                     </div>
                                                             </div>
 
